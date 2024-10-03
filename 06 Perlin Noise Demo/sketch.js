@@ -25,7 +25,7 @@ function staircase(){
   //use a for loop to draw a series of 
   //rectangles for use as terrain
   randomSeed(1); //only for random()
-  let rectWidth = 5;
+  let rectWidth = 5; //make this global
   for(let x = 0; x <= width; x += rectWidth){
     noFill();
     //generate a random height for each rect

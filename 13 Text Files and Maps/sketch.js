@@ -35,6 +35,10 @@ function draw() {
   renderGrid();
 }
 
+function windowResized(){
+  createCanvas(windowWidth, windowHeight);
+}
+
 function renderGrid(){
   //caculate grid size
   let cellWidth = width/cols;

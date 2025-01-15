@@ -34,6 +34,11 @@ function setup() {
 
 }
 
+function keyPressed(){
+  if(gorillaState === 0) gorillaState = 1;
+  else gorillaState = 0;
+}
+
 function draw() {
   background(220);
 
@@ -57,3 +62,30 @@ function draw() {
     }
   }
 }
+
+class Spiral{  //frames 0-15  (length 16)
+  constructor(x,y){ //happens one time for each object created
+    this.x = x;    this.y = y;
+    this.currentFrame = 0;
+    this.active = true;
+  }
+
+  //class methods
+  display(){
+    if(this.currentFrame > 15){
+      this.active = false;
+    }
+    else{
+      image(spirals[this.currentFrame], this.x, this.y);
+      if(frameCount % 3 === 0){
+        this.currentFrame++;
+      }
+    }
+  }
+
+
+
+}
+
+
+

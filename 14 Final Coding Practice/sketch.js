@@ -9,6 +9,7 @@ let gorillaState = 0;   //0-Idle   1-Swipe
 let idleIndex = 0; let swipeIndex = 0;
 
 let spirals = [];  //for objects later on...
+let spiralObjects = []; 
 
 function preload() {
   //Gorilla Images
@@ -31,6 +32,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  imageMode(CENTER);
 
 }
 
@@ -39,8 +41,24 @@ function keyPressed(){
   else gorillaState = 0;
 }
 
+function mousePressed(){
+  spiralObjects.push(new Spiral(mouseX, mouseY));
+}
+
 function draw() {
   background(220);
+
+  //Spiral Code
+  for(let i = 0; i < spiralObjects.length; i++){//by index
+    let s = spiralObjects[i];
+    s.display();
+    if (s.active===false){
+      spiralObjects.splice(i,1);
+      i--; //save us from skipping one object one time
+    }
+  }
+
+
 
   //Gorilla Code
   if (gorillaState === 0) { //IDLE
